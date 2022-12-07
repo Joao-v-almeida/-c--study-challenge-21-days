@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logica.csproj",
-      "projectName": "logica",
-      "projectPath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logica.csproj",
+      "projectUniqueName": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logic.csproj",
+      "projectName": "logic",
+      "projectPath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logic.csproj",
       "packagesPath": "C:\\Users\\joaov\\.nuget\\packages\\",
       "outputPath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\obj\\",
       "projectStyle": "PackageReference",

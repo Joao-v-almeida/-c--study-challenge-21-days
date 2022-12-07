@@ -1,5 +1,5 @@
 ﻿//EXERCÍCIO 6
-using Logica.Models;
+using logic.Models;
 
 bool sair = false;
 List<Cliente> listaClientesCadastrados = new List<Cliente>();
