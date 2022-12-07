@@ -1,0 +1,564 @@
+//mostre //Mostrar uma mensagem na tela
+/*
+Console.WriteLine("=====================");
+Console.WriteLine("Bem vindo ao sistema!");
+Console.WriteLine("=====================");
+*/
+//leia // ler algo que o usuário digita
+/*
+Console.Write("Digite: ");
+var informacao =  Console.ReadLine();
+
+Console.WriteLine($"O valor digitado foi:{informacao}");
+Console.WriteLine("Finalizando o sistema");
+*/
+
+//Data type (linguagem) - mostra os tipos primitivos da linguagen
+
+//exercicio 1
+/*
+Console.Write("Digite o primeiro nome: ");
+var nome1 = Console.ReadLine();
+
+Console.Write("Digite o segundo nome: ");
+var nome2 = Console.ReadLine();
+
+Console.Write("Digite o terceiro nome: ");
+var nome3 = Console.ReadLine();
+
+Console.Write("Digite o primeiro sobrenome: ");
+var sobrenome1 = Console.ReadLine();
+
+Console.Write("Digite o segundo sobrenome: ");
+var sobrenome2 = Console.ReadLine();
+
+Console.Write("Digite o terceiro sobrenome: ");
+var sobrenome3 = Console.ReadLine();
+
+Console.WriteLine($"Os nomes completos : 1-{nome1 + " " + sobrenome1}, 2-{nome2 + " " + sobrenome2}, 3-{nome3 + " " + sobrenome3}");
+
+string numero1 = "10.5";
+double numero2 = 0.5;
+
+var resultado = Convert.ToDouble(numero1) / numero2;
+
+Console.WriteLine($"{resultado.ToString("0.00")}");*/
+
+
+//CONVERSÃO
+/*
+Console.WriteLine("Digite um número: ");
+double numero1 = Convert.ToDouble(Console.ReadLine());
+
+var resultado = numero1 * 100;
+Console.WriteLine($"O resultado da operação é: {resultado}");
+*/
+
+//EXERCICIO 2
+/*
+Console.WriteLine("===BEM VINDO AO POSTO===");
+
+Console.Write("Informe o estoque de litros de combustivel do posto: ");
+double litrosEstoque = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Informe o valor do litro do combustivel: ");
+double valorLitro = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("===INFORMAÇÕES DO CLIENTE===");
+
+Console.Write("Informe o do cliente: ");
+string? nomeCliente = Console.ReadLine();
+
+Console.Write("Informe o valor que o cliente deseja colocar de combustivel: ");
+double valorCombustivel = Convert.ToDouble(Console.ReadLine());
+
+//calculo do novo estoque
+double quantidadeLitroCliente = valorCombustivel / valorLitro;
+
+if (quantidadeLitroCliente > litrosEstoque)
+{
+    Console.Write($"A quantidade de litros que o cliente {nomeCliente} deseja, é maior que a disponivel no posto.");
+}
+else
+{
+
+    litrosEstoque -= quantidadeLitroCliente;
+
+    Console.WriteLine($"O cliente {nomeCliente} colocou {quantidadeLitroCliente} litro de combustivel");
+    Console.WriteLine($"O estoque atualizado de litros do posto é: {litrosEstoque} litros");
+}
+*/
+
+//CONDICIONAIS
+//IF
+/*
+Console.Write("Digite um número: ");
+var numeroDigitado = Convert.ToInt32(Console.ReadLine());
+
+
+if (numeroDigitado >= 18 || numeroDigitado >=16) 
+{
+    Console.WriteLine("VoCê digitou um numerio maior que 18");
+}
+else 
+{
+    Console.WriteLine("Opção Inválida!");
+}
+*/
+
+//switch
+/*
+switch (numeroDigitado)
+{
+    case 18:
+        Console.WriteLine("Você digitou um número 18");
+        break;
+    case 16:
+        Console.WriteLine("Você digitou um número 18");
+        break;
+    default:
+        Console.WriteLine("Opção inválida");
+        break;
+}
+*/
+
+
+//Recebr paramentros pelo static void Main
+/*
+class Program
+{
+    static void Main(string[] args)
+    {
+        foreach(var param in args)
+        {
+            Console.WriteLine("OLÁ - " + param);
+        }
+    }
+}
+*/
+
+
+//EXERCICIO 3
+/*
+Console.WriteLine("===EXERCICIO 3===");
+Console.WriteLine("***PAYBANK***\n");
+
+Console.WriteLine("===INFORMAÇÃO DO CLIENTE===");
+Console.Write("Digite o nome do cliente: ");
+var nomeCliente = Console.ReadLine();
+
+Console.Write($"Informe o saldo inicial do cliente {nomeCliente}: ");
+var saldoInicial = Convert.ToDouble(Console.ReadLine());
+
+saldoInicial = saldoInicial - ((0.05 / 100) * saldoInicial);
+
+Console.WriteLine("\n***TAXA DE 0.05%***");
+Console.WriteLine($"***Saldo em conta é : {saldoInicial}");
+
+Console.WriteLine(@"Deseja sacar alguma quantidade do valor?
+1 = SIM
+2 = NÃO
+
+Informe a opção: ");
+var opcao = Console.ReadLine();
+
+switch (opcao)
+{
+    case "1":
+        Console.Write("Digite a quantidade a sacar: ");
+        var quantidadeSaque = Convert.ToDouble(Console.ReadLine());
+
+        if(quantidadeSaque <= saldoInicial)
+        {
+            Console.WriteLine($"O saque foi realizado com sucesso {nomeCliente}. O seu novo saldo é R$: {saldoInicial - quantidadeSaque}");
+        }
+        else
+        {
+            Console.Write($"A quantidade de saque informada é maior do que o saldo na conta. Saldo disponivel R$ {saldoInicial}.");
+        }
+        break;
+
+    case "2":
+        Console.WriteLine($"Entendido {nomeCliente}. Muito obrigado");
+        break;
+
+    default:
+        Console.WriteLine("Opção Inválida!");
+        break;
+}
+*/
+
+// LOOP
+/*
+int a = 1;
+
+while (a < 3)
+{
+    Console.WriteLine(a);
+    a++;
+}
+*/
+
+//EXERCICIO 4
+/*
+Console.WriteLine("Veículo saindo do ponto 0");
+Thread.Sleep(2000);
+
+for (var km = 0; km <= 1000; km++ )
+{
+    Console.WriteLine($"Passando pelo km {km} ...");
+    Thread.Sleep(100);
+}
+*/
+
+//EXERCICIO 5
+/*
+bool sair = false;
+do
+{
+    Console.Clear();
+
+    Console.WriteLine("""
+    =========BEM VINDO=========
+    O que deseja fazer?
+    1 - Exercício da tabuada.
+    2 - Exercício número premiado.
+    3 - Sair.
+    """);
+
+    var opcao = Console.ReadLine()?.Trim();
+    Console.Clear();
+
+    switch (opcao)
+    {
+        case "1":
+            Console.WriteLine("===EXERCÍCIO 5===\n");
+            Console.WriteLine("***TABUADA***\n");
+
+            Console.Write("Informe o multiplicador: ");
+            int multiplicador = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Informe a quantidade multiplicada: ");
+            int quantidadeMultiplicada = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            Console.WriteLine("\n**RESULTADO**");
+
+            for (int i = 1; i <= quantidadeMultiplicada; i++)
+            {
+                Console.WriteLine($"{multiplicador} x {i} = {multiplicador * i}");
+            }
+
+            break;
+
+        case "2":
+            Console.Write("Dígite o número premiado: ");
+            int numeroPremiado = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            if (numeroPremiado == 2949)
+                Console.WriteLine("Parabéns você acertou o número premiado!");
+            else
+                Console.WriteLine("Infelizmente você não acertou o número premiado!");
+
+            break;
+        case "3":
+            sair = true;
+            Console.WriteLine("\nFinalizando o sistema...");
+            Thread.Sleep(2000);
+            break;
+        default:
+            Console.WriteLine("Opção inválida!");
+            break;
+    }
+
+    if(!sair)
+    {
+        Console.WriteLine("\nVoltando ao menu...");
+        Thread.Sleep(3000);
+    } 
+}while(!sair);
+*/
+
+/*
+//ARRAY
+string[] nomes = new string[3];
+
+nomes[0] = "João";
+nomes[1] = "Camila";
+nomes[2] = "Davi";
+
+foreach (string nome in nomes)
+{
+    Console.WriteLine(nome);
+}
+
+//LIST- CCOLLECTION
+List<string> names = new List<string>();
+
+names.Add("Almeida");
+names.Add("Souza");
+names.Add("cOSTA");
+
+foreach (string nome in names)
+{
+    Console.WriteLine(nome);
+}
+
+List<string[]> matrizNames = new List<string[]>();
+
+string[] cliente = new string[3];
+cliente[0] = "Almeida";
+cliente[1] = "(00) 000-00";
+cliente[2] = "(00) 000-00";
+matrizNames.Add(cliente);
+
+string[] cliente2 = new string[3];
+cliente2[0] = "Camila";
+cliente2[1] = "(01) 000-00";
+cliente2[2] = "(01) 000-00";
+matrizNames.Add(cliente2);
+
+foreach (string[] cli in matrizNames)
+{
+    Console.WriteLine($"Nome: {cli[0]}");
+    Console.WriteLine($"Telefone: {cli[1]}");
+    Console.WriteLine($"CPF: {cli[2]}");
+}
+*/
+
+
+
+// EXEMPLOS COMENTADOS
+
+void adicionarCreditoCliente()
+{
+    var cliente = capturaCliente();
+
+    Console.Write("Digite o valor do crédito: ");
+    double credito = Convert.ToDouble(Console.ReadLine());
+
+    //DYNAMIC
+    /*string[] creditoConta = new string[3];
+    creditoConta[0] = cliente[0];
+    creditoConta[1] = credito.ToString();
+    creditoConta[2] = DateTime.Now.ToString("dd/MM/yyyy HH:MM");
+
+    //var idCliente = cliente[0];*/
+
+    contaCorrenteClientes.Add(new ContaCorrente
+    {
+        IdCliente = cliente.Id,
+        Valor = credito,
+        Data = DateTime.Now
+    });
+    mensagem($"Crédito adicionado com sucesso. Saldo do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id)}");
+}
+
+void fazerDebitoCliente()
+{
+    var cliente = capturaCliente();
+
+    Console.Write("Digite o valor de retirada: ");
+    double retirada = Convert.ToDouble(Console.ReadLine());
+
+    /*string[] creditoConta = new string[3];
+    creditoConta[0] = cliente[0];
+    creditoConta[1] = $"-{retirada}";
+    creditoConta[2] = DateTime.Now.ToString("dd/MM/yyyy HH:mm");*/
+
+    //var idCliente = cliente[0];
+
+    contaCorrenteClientes.Add(new ContaCorrente
+    {
+        IdCliente = cliente.Id,
+        Valor = retirada *-1,
+        Data = DateTime.Now
+    });
+    mensagem($"Retirada realizada com sucesso. Saldo do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id)}");
+}
+
+void cadastrarCliente()
+{
+    var idCliente = Guid.NewGuid().ToString();
+
+    Console.Write("Informe o seu nome: ");
+    var nomeCliente = Console.ReadLine();
+
+    Console.Write($"{nomeCliente}, informe seu telefone: ");
+    var telefoneCliente = Console.ReadLine();
+
+    Console.Write($"{nomeCliente}, informe seu e-maiL: ");
+    var emailCliente = Console.ReadLine();
+
+    /*var cliente = new string[4];
+
+    cliente[0] = idCliente.ToString();
+    cliente[1] = nomeCliente != null ? nomeCliente : "[Sem nome]";
+    cliente[2] = telefoneCliente ?? "[Sem telefone]";
+    cliente[3] = emailCliente ?? "[Sem e-mail]";*/
+
+    listaClientesCadastrados.Add(new Cliente
+    {
+        Id = idCliente,
+        Nome = nomeCliente != null ? nomeCliente : "[Sem nome]",
+        Telefone = telefoneCliente ?? "[Sem telefone]",
+        Email = emailCliente ?? "[Sem e-mail]"
+    });
+    mensagem("Cliente cadastrado com sucesso!");
+}
+
+dynamic capturaCliente()
+{
+    listarClientesCadastrados();
+
+    Console.Write("Informe o ID: ");
+    var idCLiente = Console.ReadLine()?.Trim();
+
+    Cliente? cliente = listaClientesCadastrados.Find(c => c.Id == idCLiente);
+
+    if (cliente == null)
+    {
+        mensagem("Cliente não encontrado na lista, digite o ID corretamente conforme a lista de clientes");
+        menuClienteNaoExiste();
+        return capturaCliente();
+    }
+
+    return cliente;
+}
+
+List<ContaCorrente> extratoCliente(string idCliente)
+{
+    var contaCorrenteCliente = contaCorrenteClientes.FindAll(c => c.IdCliente == idCliente);
+    if (contaCorrenteClientes.Count == 0)
+        return new List<ContaCorrente>();
+
+    return contaCorrenteCliente;
+}
+
+void listarClientesCadastrados()
+{
+    if (listaClientesCadastrados.Count == 0)
+    {
+        menuClienteNaoExiste();
+    }
+    mostrarClientes(false, 0, "===Selecione um cliente da lista===");
+}
+
+void mensagem(string msg)
+{
+    Console.Clear();
+    Console.WriteLine(msg);
+    Thread.Sleep(2000);
+}
+
+void menuClienteNaoExiste()
+{
+    Console.Write("""
+        1 - Cadastrar Cliente
+        2 - Voltar Menu
+        3 - Sair do programa.
+
+        O que você deseja fazer: 
+        """);
+    string? opcao = Console.ReadLine()?.Trim();
+
+    switch (opcao)
+    {
+        case "1":
+            cadastrarCliente();
+            break;
+        case "2":
+            break;
+        case "3":
+            Environment.Exit(0);
+            break;
+        default:
+            Console.WriteLine("Opção inválida");
+            Thread.Sleep(2000);
+            break;
+    }
+}
+
+void menuPrincipal()
+{
+    Console.Clear();
+    Console.WriteLine("====Seja bem vindo a empresa Lina====\n");
+
+    Console.Write("""
+    ***MENU INICIAL***
+
+    O que deseja fazer?
+
+    1- Cadastrar o cliente.
+    2- Ver extrato cliente.
+    3- Crédito em conta
+    4- Retirada de valores.
+    5- Sair do sistema.
+
+    Digite a opção desejada: 
+    """);
+}
+
+void mostrarClientes(bool sleep = true, int timerSleep = 2000, string header = "===Lista de clientes===")
+{
+    Console.Clear();
+    Console.WriteLine(header);
+
+    foreach (var cliente in listaClientesCadastrados)
+    {
+        Console.WriteLine("ID: " + cliente.Id);
+        Console.WriteLine("Nome: " + cliente.Nome);
+        Console.WriteLine("Telefone: " + cliente.Telefone);
+        Console.WriteLine("E-mail: " + cliente.Email);
+        Console.WriteLine("----------------------");
+
+        if (sleep)
+        {
+            Thread.Sleep(timerSleep);
+        }
+    }
+}
+
+void mostrarContaCorrente()
+{
+    if (listaClientesCadastrados.Count == 0 || contaCorrenteClientes.Count == 0)
+    {
+        mensagem("Não existe clientes ou não existe movimentações em conta corrente, cadastre o cliente e faça crédito em conta");
+        return;
+    }
+
+    var cliente = capturaCliente();
+    var contaCorrenteCliente = extratoCliente(cliente.Id);
+
+    foreach (var contaCorrente in contaCorrenteCliente)
+    {
+        Console.WriteLine($"Data: {contaCorrente.Data.ToString("dd/MM/yyyy HH/mm")}");
+        Console.WriteLine($"Saldo: {contaCorrente.Valor}");
+        Console.WriteLine("--------------------------");
+    }
+
+    Console.WriteLine($"O valor total da conta é do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id, contaCorrenteCliente)}");
+
+    Console.WriteLine("Digite enter para continuar...");
+    Console.Read();
+}
+
+double saldoCliente(string idCliente, List<ContaCorrente>? contaCorrenteCliente = null)
+{
+    if (contaCorrenteCliente == null)
+        contaCorrenteCliente = extratoCliente(idCliente);
+
+    if (contaCorrenteCliente.Count == 0) return 0;
+
+    /*double soma = 0;
+    foreach (var  cc in contaCorrenteCliente)
+    {
+        soma += cc.Valor;
+    }
+
+    return soma;*/
+    return Convert.ToDouble(contaCorrenteCliente.Sum(cc => cc.Valor));
+}
