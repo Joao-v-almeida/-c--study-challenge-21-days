@@ -562,3 +562,18 @@ double saldoCliente(string idCliente, List<ContaCorrente>? contaCorrenteCliente 
     return soma;*/
     return Convert.ToDouble(contaCorrenteCliente.Sum(cc => cc.Valor));
 }
+
+
+//dotnet add sln
+#dotnet new sln --name ""
+
+//add projects
+
+dotnet sln add
+
+//MSTESTE
+dotnet new classlib
+
+//add reference
+
+dotnet add reference
