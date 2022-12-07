@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dyHmpyOobrNp1+XH2p8X3IO5EDpxhCMlIFpJz20+qs2fhWAeoGdH406Z4v471jHCS3MZ/QUmYEWDJnK8r8Lakw==",
+  "dgSpecHash": "ok+DfMUkAzaJMj4/LhPfB63PosTsooi9Za+ZW+RV2+MIOG9tUuEvP5zAdR7/MfrSxTRcpK4fVUM44Z0Fq7Uedw==",
   "success": true,
-  "projectFilePath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logic.csproj",
+  "projectFilePath": "E:\\workSpace\\Tornese\\csharpChallenge\\logic\\logic.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

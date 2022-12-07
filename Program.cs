@@ -1,9 +1,9 @@
 ﻿//EXERCÍCIO 6
 using logic.Models;
+using logic.Services;
 
 bool sair = false;
-List<Cliente> listaClientesCadastrados = new List<Cliente>();
-List<ContaCorrente> contaCorrenteClientes = new List<ContaCorrente>();
+
 
 do
 {
@@ -60,29 +60,29 @@ void adicionarCreditoCliente()
     Console.Write("Digite o valor do crédito: ");
     double credito = Convert.ToDouble(Console.ReadLine());
 
-    contaCorrenteClientes.Add(new ContaCorrente
+    CurrentAccountService.Get().List.Add(new CurrentAccount
     {
         IdCliente = cliente.Id,
         Valor = credito,
         Data = DateTime.Now
     });
-    mensagem($"Crédito adicionado com sucesso. Saldo do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id)}");
+    mensagem($"Crédito adicionado com sucesso. Saldo do cliente {cliente.Nome} é de R$ {CurrentAccountService.Get().CustomerBalance(cliente.Id)}");
 }
 
 void fazerDebitoCliente()
 {
     var cliente = capturaCliente();
 
-    Console.Write("Digite o valor de retirada: ");
+    Console.Write("Enter the withdrawal amount: ");
     double retirada = Convert.ToDouble(Console.ReadLine());
 
-    contaCorrenteClientes.Add(new ContaCorrente
+    CurrentAccountService.Get().List.Add(new CurrentAccount
     {
         IdCliente = cliente.Id,
-        Valor = retirada *-1,
+        Valor = retirada * -1,
         Data = DateTime.Now
     });
-    mensagem($"Retirada realizada com sucesso. Saldo do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id)}");
+    mensagem($"Withdrawal completed successfully. Customer balance {cliente.Nome} is R$ {CurrentAccountService.Get().CustomerBalance(cliente.Id)}");
 }
 
 void cadastrarCliente()
@@ -98,7 +98,7 @@ void cadastrarCliente()
     Console.Write($"{nomeCliente}, informe seu e-maiL: ");
     var emailCliente = Console.ReadLine();
 
-    listaClientesCadastrados.Add(new Cliente
+    ClientService.Get().List.Add(new Client
     {
         Id = idCliente,
         Nome = nomeCliente != null ? nomeCliente : "[Sem nome]",
@@ -112,33 +112,24 @@ dynamic capturaCliente()
 {
     listarClientesCadastrados();
 
-    Console.Write("Informe o ID: ");
+    Console.Write("Inform the ID: ");
     var idCLiente = Console.ReadLine()?.Trim();
 
-    Cliente? cliente = listaClientesCadastrados.Find(c => c.Id == idCLiente);
+    Client? client = ClientService.Get().List.Find(c => c.Id == idCLiente);
 
-    if (cliente == null)
+    if (client == null)
     {
-        mensagem("Cliente não encontrado na lista, digite o ID corretamente conforme a lista de clientes");
+        mensagem("Customer not found in list, enter ID correctly as per customer list");
         menuClienteNaoExiste();
         return capturaCliente();
     }
 
-    return cliente;
-}
-
-List<ContaCorrente> extratoCliente(string idCliente)
-{
-    var contaCorrenteCliente = contaCorrenteClientes.FindAll(c => c.IdCliente == idCliente);
-    if (contaCorrenteClientes.Count == 0)
-        return new List<ContaCorrente>();
-
-    return contaCorrenteCliente;
+    return client;
 }
 
 void listarClientesCadastrados()
 {
-    if (listaClientesCadastrados.Count == 0)
+    if (ClientService.Get().List.Count == 0)
     {
         menuClienteNaoExiste();
     }
@@ -205,7 +196,7 @@ void mostrarClientes(bool sleep = true, int timerSleep = 2000, string header = "
     Console.Clear();
     Console.WriteLine(header);
 
-    foreach (var cliente in listaClientesCadastrados)
+    foreach (var cliente in ClientService.Get().List)
     {
         Console.WriteLine("ID: " + cliente.Id);
         Console.WriteLine("Nome: " + cliente.Nome);
@@ -222,14 +213,14 @@ void mostrarClientes(bool sleep = true, int timerSleep = 2000, string header = "
 
 void mostrarContaCorrente()
 {
-    if (listaClientesCadastrados.Count == 0 || contaCorrenteClientes.Count == 0)
+    if (ClientService.Get().List.Count == 0 || CurrentAccountService.Get().List.Count == 0)
     {
         mensagem("Não existe clientes ou não existe movimentações em conta corrente, cadastre o cliente e faça crédito em conta");
         return;
     }
 
     var cliente = capturaCliente();
-    var contaCorrenteCliente = extratoCliente(cliente.Id);
+    var contaCorrenteCliente = CurrentAccountService.Get().ExtractClient(cliente.Id);
 
     foreach (var contaCorrente in contaCorrenteCliente)
     {
@@ -238,21 +229,13 @@ void mostrarContaCorrente()
         Console.WriteLine("--------------------------");
     }
 
-    Console.WriteLine($"O valor total da conta é do cliente {cliente.Nome} é de R$ {saldoCliente(cliente.Id, contaCorrenteCliente)}");
+    Console.WriteLine($"O valor total da conta é do cliente {cliente.Nome} é de R$ {CurrentAccountService.Get().CustomerBalance(cliente.Id, contaCorrenteCliente)}");
 
     Console.WriteLine("Digite enter para continuar...");
     Console.Read();
 }
 
-double saldoCliente(string idCliente, List<ContaCorrente>? contaCorrenteCliente = null)
-{
-    if (contaCorrenteCliente == null)
-        contaCorrenteCliente = extratoCliente(idCliente);
 
-    if (contaCorrenteCliente.Count == 0) return 0;
-
-    return Convert.ToDouble(contaCorrenteCliente.Sum(cc => cc.Valor));
-}
 
 
 

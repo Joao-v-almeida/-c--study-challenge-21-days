@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logic.csproj",
+      "projectUniqueName": "E:\\workSpace\\Tornese\\csharpChallenge\\logic\\logic.csproj",
       "projectName": "logic",
-      "projectPath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\logic.csproj",
+      "projectPath": "E:\\workSpace\\Tornese\\csharpChallenge\\logic\\logic.csproj",
       "packagesPath": "C:\\Users\\joaov\\.nuget\\packages\\",
-      "outputPath": "E:\\workSpace\\Tornese\\desafio_csharp\\logica\\obj\\",
+      "outputPath": "E:\\workSpace\\Tornese\\csharpChallenge\\logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,6 +1,6 @@
 namespace logic.Models;
 
-public struct Cliente
+public struct Client
 {
     public string Id { get; set; }
     public string Nome { get; set; }

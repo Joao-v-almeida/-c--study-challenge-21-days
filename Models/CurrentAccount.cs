@@ -1,6 +1,6 @@
 namespace logic.Models;
 
-public struct ContaCorrente
+public struct CurrentAccount
 {
     public string IdCliente { get; set; }
     public double Valor { get; set; }
