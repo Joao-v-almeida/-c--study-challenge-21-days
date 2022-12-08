@@ -577,3 +577,6 @@ dotnet new classlib
 //add reference
 
 dotnet add reference
+
+//test
+dotnet test
